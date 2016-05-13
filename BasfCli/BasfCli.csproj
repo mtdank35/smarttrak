@@ -83,6 +83,7 @@
     <Compile Include="Commands\LangTrans\LangCommand.cs" />
     <Compile Include="Commands\Misc\HelpCommand.cs" />
     <Compile Include="Commands\Misc\SysinfoCommand.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasfCliInstaller.cs" />

@@ -44,7 +44,8 @@ namespace BasfCli.Commands.Misc
                         using (new ForegroundColor(ConsoleColor.Red))
                             _writer.WriteLine("Extracting All Languages");
 
-                        TransposeLanguage(cn, 1, "en");
+                        TransposeLanguage(cn, Language.English, "en");
+                        TransposeLanguage(cn, Language.French_France, "fr");
                         // TODO: expand list per all supported languages
                     }
                     else
@@ -60,10 +61,13 @@ namespace BasfCli.Commands.Misc
                         {
                             switch (langId)
                             {
-                                case 1:
+                                case Language.English:
                                     fileName = "en";
                                     break;
-                                    // TODO: expand list per all supported languages
+                                case Language.French_France:
+                                    fileName = "fr";
+                                    break;
+                                // TODO: expand list per all supported languages
                                 default:
                                     using (new ForegroundColor(ConsoleColor.Red))
                                         _writer.WriteLine(String.Format("Unknown Language Id: {0:g0}", langId));
