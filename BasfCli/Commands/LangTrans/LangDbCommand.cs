@@ -18,7 +18,6 @@ namespace BasfCli.Commands.Misc
 		private readonly IEnumerable<Type> _commandTypes;
 		private readonly TextWriter _writer;
         private string _langNmbrs;
-        private string _tempDir = null;
         private ConfContainer _conf = null;
 
         public LangDbCommand(IEnumerable<Type> commandTypes, TextWriter writer)
