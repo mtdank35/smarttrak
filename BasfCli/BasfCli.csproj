@@ -95,11 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlScripts\BackupDb.sql" />
-    <Content Include="SqlScripts\CreateTableLicense.sql" />
     <Content Include="SqlScripts\DbExists.sql" />
-    <Content Include="SqlScripts\InitSchemaDw.sql" />
-    <Content Include="SqlScripts\InitSchemaHq.sql" />
-    <Content Include="SqlScripts\InitSchemaStore.sql" />
     <Content Include="SqlScripts\ObjectExists.sql" />
     <EmbeddedResource Include="SqlScripts\CreateDatabase.sql" />
   </ItemGroup>
