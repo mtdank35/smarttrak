@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using BasfCli.Conf;
+using Dapper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,28 +13,30 @@ using System.Text;
 namespace BasfCli.Commands.Misc
 {
 	[CommandHelp("Convert LangTrans table to JSON")]
-	public class LangCommand : Command
+	public class LangDbCommand : Command
 	{
 		private readonly IEnumerable<Type> _commandTypes;
 		private readonly TextWriter _writer;
         private string _langNmbrs;
         private string _tempDir = null;
+        private ConfContainer _conf = null;
 
-        public LangCommand(IEnumerable<Type> commandTypes, TextWriter writer)
+        public LangDbCommand(IEnumerable<Type> commandTypes, TextWriter writer)
 		{
 			_commandTypes = commandTypes;
 			_writer = writer;
 
             OptionSet.Add("l|lang=", "Language Code", x => _langNmbrs = x);
+
+            // load configuration data
+            var ea = System.Reflection.Assembly.GetEntryAssembly();
+            FileInfo fi = new FileInfo(ea.Location);
+            _conf = new ConfContainer(fi.Directory.FullName);
         }
 
         protected override void InnerExecute(string[] arguments)
         {
-            // TODO: get this 2 vars dynamically
-            string dbcs = @"Data Source=.\SQL_ICCM;Initial Catalog=iccm_db;Integrated Security=False;User ID=sa;Password=rUnt94thigh=kAnE~Lover97Lid;Connect Timeout=5";
-            _tempDir = @"C:\Temp\JSONLang";
-
-            using (var cn = new SqlConnection(dbcs))
+            using (var cn = new SqlConnection(_conf.Global.ConnectString))
             {
                 try
                 {
@@ -93,7 +96,7 @@ namespace BasfCli.Commands.Misc
             foreach (var thing in things)
                 lang.Add(thing.lbl_id, thing.label_text);
 
-            string path = Path.Combine(_tempDir, String.Format("{0}.json", fileName));
+            string path = Path.Combine(_conf.Global.OutputDir, String.Format("{0}.json", fileName));
             File.WriteAllText(path, JsonConvert.SerializeObject(lang));
         }
 

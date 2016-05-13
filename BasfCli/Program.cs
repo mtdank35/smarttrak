@@ -1,8 +1,10 @@
-﻿using Castle.Windsor;
+﻿using BasfCli.Conf;
+using Castle.Windsor;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,9 @@ namespace BasfCli
 
             var container = new WindsorContainer()
                 .Install(new BasfCliInstaller());
+
+            var ea = System.Reflection.Assembly.GetEntryAssembly();
+            FileInfo fi = new FileInfo(ea.Location);
 
             var commandDispatcher = container.Resolve<CommandDispatcher>();
 
