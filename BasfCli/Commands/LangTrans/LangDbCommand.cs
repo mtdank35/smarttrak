@@ -48,11 +48,12 @@ namespace BasfCli.Commands.Misc
 
                         TransposeLanguage(cn, Language.English, "en");
                         TransposeLanguage(cn, Language.French_France, "fr");
+                        TransposeLanguage(cn, Language.Turkish, "tr");
                         // TODO: expand list per all supported languages
                     }
                     else
                     {
-                        // TODO: extract a select language(s)
+                        // extract select language(s)
                         _writer.WriteLine();
                         using (new ForegroundColor(ConsoleColor.Red))
                             _writer.WriteLine(String.Format("Extracting Lang Id: {0:g0}", _langNmbrs));
@@ -68,6 +69,9 @@ namespace BasfCli.Commands.Misc
                                     break;
                                 case Language.French_France:
                                     fileName = "fr";
+                                    break;
+                                case Language.Turkish:
+                                    fileName = "tr";
                                     break;
                                 // TODO: expand list per all supported languages
                                 default:
