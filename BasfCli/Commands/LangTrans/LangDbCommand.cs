@@ -37,7 +37,7 @@ namespace BasfCli.Commands.Misc
 
         protected override void InnerExecute(string[] arguments)
         {
-            using (var cn = new SqlConnection(_conf.Global.ConnectString))
+            using (var cn = new SqlConnection(_conf.Global.IccmDbcs))
             {
                 try
                 {
