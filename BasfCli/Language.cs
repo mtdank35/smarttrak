@@ -39,6 +39,21 @@ namespace BasfCli
         public const int Macedonian = 40;
         public const int Japanese = 41;
         public const int Arabic = 49;
+
+        // Figure out what these are...
+        public const int Unknown11 = 11;
+        public const int Unknown21 = 21;
+        public const int Unknown36 = 36;
+        public const int Unknown37 = 37;
+        public const int Unknown42 = 42;
+        public const int Unknown44 = 44;
+        public const int Unknown45 = 45;
+        public const int Unknown46 = 46;
+        public const int Unknown47 = 47;
+        public const int Unknown48 = 48;
+        public const int Unknown51 = 51;
+        public const int Unknown52 = 52;
+        public const int Unknown53 = 53;
     }
 
     public class LanguageInfo
