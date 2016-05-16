@@ -20,6 +20,7 @@ namespace BasfCli.Commands.Misc
         private string _langNmbrs;
         private ConfContainer _conf = null;
         private List<LangTrans> _rollbackLang = null;
+        private const int MASTER_LANG = Language.English;
 
         public LangDbCommand(IEnumerable<Type> commandTypes, TextWriter writer)
 		{
@@ -40,7 +41,7 @@ namespace BasfCli.Commands.Misc
             {
                 try
                 {
-                    _rollbackLang = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = Language.English }).OrderBy(x => x.label_id).ToList();
+                    _rollbackLang = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = MASTER_LANG }).OrderBy(x => x.label_id).ToList();
                     cn.Open();
                     var map = new LanguageMap();
                     if (String.IsNullOrWhiteSpace(_langNmbrs))
@@ -93,17 +94,32 @@ namespace BasfCli.Commands.Misc
             s.Start();
             _writer.WriteLine(String.Format("Extracting Language [{0:g0}: {1}]", li.Id, li.Name));
 
-            var things = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = li.Id }).OrderBy(x => x.label_id).ToList();
             Dictionary<string, string> lang = new Dictionary<string, string>();
-            foreach (var template in _rollbackLang)
+            if (li.Id == MASTER_LANG)
             {
-                // only taking 1st instance of lbl_id in case of dupes
-                // might need some better rules
-                if (lang.ContainsKey(template.lbl_id))
-                    continue;
+                // use the already queried master language data, save from having to go query again...
+                foreach (var template in _rollbackLang)
+                {
+                    // only taking 1st instance of lbl_id in case of dupes
+                    // might need some better rules
+                    if (lang.ContainsKey(template.lbl_id))
+                        continue;
+                    lang.Add(template.lbl_id, template.label_text);
+                }
+            }
+            else
+            {
+                var things = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = li.Id }).OrderBy(x => x.label_id).ToList();
+                foreach (var template in _rollbackLang)
+                {
+                    // only taking 1st instance of lbl_id in case of dupes
+                    // might need some better rules
+                    if (lang.ContainsKey(template.lbl_id))
+                        continue;
 
-                var chkTranslation = things.Where(x => x.label_id == template.label_id).FirstOrDefault();
-                lang.Add(template.lbl_id, chkTranslation == null ? template.label_text : chkTranslation.label_text);
+                    var chkTranslation = things.Where(x => x.label_id == template.label_id).FirstOrDefault();
+                    lang.Add(template.lbl_id, chkTranslation == null ? template.label_text : chkTranslation.label_text);
+                }
             }
 
             string path = Path.Combine(_conf.Global.OutputDir, String.Format("{0}.json", li.FileName));
