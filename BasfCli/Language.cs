@@ -39,21 +39,21 @@ namespace BasfCli
         public const int Macedonian = 40;
         public const int Japanese = 41;
         public const int Arabic = 49;
+        public const int Chinese = 21;
+        public const int Icelandic = 37;
+        public const int Hebrew = 42;
+        public const int Farsi = 44;
+        public const int Thai = 45;
+        public const int Vietnamese = 46;
+        public const int Korean = 47;
+        public const int Finnish = 48;
+        public const int Indonesian = 53;
 
         // Figure out what these are...
         public const int Unknown11 = 11;
-        public const int Unknown21 = 21;
         public const int Unknown36 = 36;
-        public const int Unknown37 = 37;
-        public const int Unknown42 = 42;
-        public const int Unknown44 = 44;
-        public const int Unknown45 = 45;
-        public const int Unknown46 = 46;
-        public const int Unknown47 = 47;
-        public const int Unknown48 = 48;
         public const int Unknown51 = 51;
         public const int Unknown52 = 52;
-        public const int Unknown53 = 53;
     }
 
     public class LanguageInfo
@@ -107,6 +107,21 @@ namespace BasfCli
             LangMap.Add(Language.Macedonian, new LanguageInfo() { Id = 40, Name = "Macedonian", FileName = "40.mk" });
             LangMap.Add(Language.Japanese, new LanguageInfo() { Id = 41, Name = "Japanese", FileName = "41.ja" });
             LangMap.Add(Language.Arabic, new LanguageInfo() { Id = 49, Name = "Arabic", FileName = "49.ar" });
+            LangMap.Add(Language.Chinese, new LanguageInfo() { Id = 21, Name = "Chinese", FileName = "21.zh" });
+            LangMap.Add(Language.Farsi, new LanguageInfo() { Id = 44, Name = "Farsi", FileName = "44.fa" });
+            LangMap.Add(Language.Finnish, new LanguageInfo() { Id = 48, Name = "Finnish", FileName = "48.zh" });
+            LangMap.Add(Language.Hebrew, new LanguageInfo() { Id = 42, Name = "Hebrew", FileName = "42.iw" });
+            LangMap.Add(Language.Icelandic, new LanguageInfo() { Id = 37, Name = "Icelandic", FileName = "37.is" });
+            LangMap.Add(Language.Korean, new LanguageInfo() { Id = 47, Name = "Korean", FileName = "47.ko" });
+            LangMap.Add(Language.Thai, new LanguageInfo() { Id = 45, Name = "Thai", FileName = "45.th" });
+            LangMap.Add(Language.Vietnamese, new LanguageInfo() { Id = 46, Name = "Vietnamese", FileName = "46.vi" });
+            LangMap.Add(Language.Indonesian, new LanguageInfo() { Id = 53, Name = "Indonesian", FileName = "53.in" });
+
+            // Figure out what these are...
+            //LangMap.Add(Language.Unknown11, new LanguageInfo() { Id = 11, Name = "", FileName = "11." });
+            //LangMap.Add(Language.Unknown36, new LanguageInfo() { Id = 36, Name = "", FileName = "36." });
+            //LangMap.Add(Language.Unknown51, new LanguageInfo() { Id = 51, Name = "", FileName = "51." });
+            //LangMap.Add(Language.Unknown52, new LanguageInfo() { Id = 52, Name = "", FileName = "52." });
         }
     }
 }
