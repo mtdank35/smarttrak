@@ -1,18 +1,18 @@
 angular.module('lTrans', ['ng-translation'])
   .controller('mainController', function($scope, ngTranslation) {
 
-    $scope.languages = ['en', 'fr', 'po', 'cf', 'sp'];
+    $scope.languages = ['en', 'fr', 'pl', 'cf', 'es'];
 
     $scope.update = function (language) {
         if (language == 'en')
             $scope.langText = 'Language: English';
         if (language == 'fr')
             $scope.langText = 'Language: French';
-        if (language == 'po')
+        if (language == 'pl')
             $scope.langText = 'Language: Polish';
         if (language == 'cf')
             $scope.langText = 'Language: Canadian French';
-        if (language == 'sp')
+        if (language == 'es')
             $scope.langText = 'Language: Spanish';
       ngTranslation.use(language);
     };
@@ -28,9 +28,9 @@ angular.module('lTrans', ['ng-translation'])
       .langsFiles({
         en: '1.en',
         fr: '2.fr',
-        po: '3.po',
+        pl: '3.pl',
         cf: '4.cf',
-        sp: '5.sp'
+        es: '5.es'
       })
       .fallbackLanguage('en')
   }])
