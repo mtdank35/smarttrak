@@ -140,7 +140,7 @@ namespace BasfCli.Commands.Misc
                 get
                 {
                     if (_lblPrefix)
-                        return this.label_id == 0 ? "" : String.Format("x{0:#0}", this.label_id);
+                        return this.label_id == 0 ? "" : String.Format("b{0:#0}", this.label_id);
                     else
                         return this.label_id == 0 ? "" : String.Format("{0:#0}", this.label_id);
                 }
