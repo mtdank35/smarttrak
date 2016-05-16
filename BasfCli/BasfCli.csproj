@@ -92,6 +92,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasfCliInstaller.cs" />
+    <Compile Include="SqlFiles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlFiles.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -102,6 +107,10 @@
     <Content Include="SqlScripts\BackupDb.sql" />
     <Content Include="SqlScripts\DbExists.sql" />
     <Content Include="SqlScripts\ObjectExists.sql" />
+    <EmbeddedResource Include="SqlFiles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlFiles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SqlScripts\CreateDatabase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
