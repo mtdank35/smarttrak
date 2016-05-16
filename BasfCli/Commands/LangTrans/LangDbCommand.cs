@@ -40,47 +40,39 @@ namespace BasfCli.Commands.Misc
                 try
                 {
                     cn.Open();
+                    var map = new LanguageMap();
                     if (String.IsNullOrWhiteSpace(_langNmbrs))
                     {
                         _writer.WriteLine();
-                        using (new ForegroundColor(ConsoleColor.Red))
+                        using (new ForegroundColor(ConsoleColor.Blue))
                             _writer.WriteLine("Extracting All Languages");
 
-                        TransposeLanguage(cn, Language.English, "en");
-                        TransposeLanguage(cn, Language.French_France, "fr");
-                        TransposeLanguage(cn, Language.Turkish, "tr");
-                        // TODO: expand list per all supported languages
+                        foreach (var key in map.LangMap.Keys)
+                        {
+                            var lang = map.LangMap[key];
+                            TransposeLang(cn, lang);
+                        }
                     }
                     else
                     {
                         // extract select language(s)
                         _writer.WriteLine();
-                        using (new ForegroundColor(ConsoleColor.Red))
-                            _writer.WriteLine(String.Format("Extracting Lang Id: {0:g0}", _langNmbrs));
-
+                        using (new ForegroundColor(ConsoleColor.Blue))
+                            _writer.WriteLine("Extracting Select Language(s)");
+                        
                         List<int> langIds = _langNmbrs.Split(",".ToCharArray()).Select(Int32.Parse).ToList();
-                        string fileName = String.Empty;
                         foreach (var langId in langIds)
                         {
-                            switch (langId)
+                            if (map.LangMap.ContainsKey(langId))
                             {
-                                case Language.English:
-                                    fileName = "en";
-                                    break;
-                                case Language.French_France:
-                                    fileName = "fr";
-                                    break;
-                                case Language.Turkish:
-                                    fileName = "tr";
-                                    break;
-                                // TODO: expand list per all supported languages
-                                default:
-                                    using (new ForegroundColor(ConsoleColor.Red))
-                                        _writer.WriteLine(String.Format("Unknown Language Id: {0:g0}", langId));
-                                    continue;
+                                var lang = map.LangMap[langId];
+                                TransposeLang(cn, lang);
                             }
-
-                            TransposeLanguage(cn, langId, fileName);
+                            else
+                            {
+                                using (new ForegroundColor(ConsoleColor.Red))
+                                    _writer.WriteLine(String.Format("Unknown Language Id: {0:g0}", langId));
+                            }
                         }
                     }
                 }
@@ -92,15 +84,30 @@ namespace BasfCli.Commands.Misc
             }
         }
 
-        private void TransposeLanguage(SqlConnection cn, int langId, string fileName)
+        private void TransposeLang(SqlConnection cn, LanguageInfo li)
         {
-            var things = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = langId }).OrderBy(x => x.label_id).ToList();
+            Stopwatch s = new Stopwatch();
+            s.Reset();
+            s.Start();
+            _writer.WriteLine(String.Format("Extracting Language [{0:g0}: {1}]", li.Id, li.Name));
+            
+            var things = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = li.Id }).OrderBy(x => x.label_id).ToList();
             Dictionary<string, string> lang = new Dictionary<string, string>();
             foreach (var thing in things)
-                lang.Add(thing.lbl_id, thing.label_text);
+            {
+                // only taking 1st instance of lbl_id in case of dupes
+                // might need some better rules
+                if (lang.ContainsKey(thing.lbl_id))
+                    continue;
 
-            string path = Path.Combine(_conf.Global.OutputDir, String.Format("{0}.json", fileName));
+                lang.Add(thing.lbl_id, thing.label_text);
+            }
+
+            string path = Path.Combine(_conf.Global.OutputDir, String.Format("{0}.json", li.FileName));
             File.WriteAllText(path, JsonConvert.SerializeObject(lang));
+
+            s.Stop();
+            _writer.WriteLine(String.Format("     > {0}h {1}m {2}.{3:0}s", s.Elapsed.Hours, s.Elapsed.Minutes, s.Elapsed.Seconds, s.Elapsed.Milliseconds));
         }
 
         private class LangTrans
@@ -108,9 +115,21 @@ namespace BasfCli.Commands.Misc
             [JsonIgnore]
             public int label_id { get; set; }
             public string label_text { get; set; }
-            // if we really need the 'x' prefix, redo this part...
-            //public string lbl_id { get { return this.label_id == 0 ? "" : String.Format("x{0:#0}", this.label_id); } }
-            public string lbl_id { get { return this.label_id == 0 ? "" : String.Format("{0:#0}", this.label_id); } }
+
+            // control if we really need the 'x' prefix or not...
+            [JsonIgnore]
+            private bool _lblPrefix = true;
+
+            public string lbl_id
+            {
+                get
+                {
+                    if (_lblPrefix)
+                        return this.label_id == 0 ? "" : String.Format("x{0:#0}", this.label_id);
+                    else
+                        return this.label_id == 0 ? "" : String.Format("{0:#0}", this.label_id);
+                }
+            }
         }
     }
 }
