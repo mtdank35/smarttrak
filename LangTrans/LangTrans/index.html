@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html ng-app="lTrans">
+    <head>
+        <title>ng-translation demo</title>
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/bootstrap-formhelpers.css" rel="stylesheet" />
+        <link href="css/bootstrap-formhelpers-countries.flags.css" rel="stylesheet" />
+        <link href="css/prettify.css" rel="stylesheet" />
+        <link href="css/docs.css" rel="stylesheet" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <!-- AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="app/app.js"></script>
+    </head>
+<body ng-controller="mainController">
+    <section id="languages">
+       
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                {{'b1' | translate}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="update('en')"><i class="icon-flag-US"></i> English</></a></li>
+                <li><a ng-click="update('fr')"><i class="icon-flag-FR"></i> French</></a></li>
+                <li><a ng-click="update('pl')"><i class="icon-flag-PK"></i> Polish</></a></li>
+                <li><a ng-click="update('fr')"><i class="icon-flag-CF"></i> Canadian French</></a></li>
+                <li><a ng-click="update('es')"><i class="icon-flag-SE"></i> Spanish</></a></li>
+            </ul>
+        </div>
+        
+    </section>
+    
+    <br/>
+    ----------------------------<br/>
+    <h3>{{ 'b22' | translate }}</h3>
+    <h4>{{ 'b10'  | translate }}</h4>
+    <p>{{ 'b20' | translate }}</p>
+    <button id="btnhello">{{ 'b19' | translate }}</button>      
+    
+    <script src="js/ng-translation.js"></script>
+    <script src="app/controllers/mainController.js"></script>
+
+    <!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
+    <script src="js/bootstrap-formhelpers-selectbox.js"></script>
+    <script src="js/bootstrap-formhelpers-countries.en_US.js"></script>
+    <script src="js/bootstrap-formhelpers-languages.codes.js"></script>
+    <script src="js/bootstrap-formhelpers-languages.js"></script>
+    <script src="js/prettify.js"></script>
+
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</body>
+</html>
