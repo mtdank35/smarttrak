@@ -84,7 +84,7 @@
     <Compile Include="Cli\TypeNameMatcher.cs" />
     <Compile Include="Commands\ApplicationCommand.cs" />
     <Compile Include="Commands\LangTrans\JsonLangCommand.cs" />
-    <Compile Include="Commands\LangTrans\DbLangCommand.cs" />
+    <Compile Include="Commands\LangTrans\DiskLangCommand.cs" />
     <Compile Include="Commands\Misc\HelpCommand.cs" />
     <Compile Include="Commands\Misc\SysinfoCommand.cs" />
     <Compile Include="Conf\ConfContainer.cs" />
