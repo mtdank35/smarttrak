@@ -16,7 +16,7 @@ using System.Text;
 namespace BasfCli.Commands.Misc
 {
 	[CommandHelp("Convert LangTrans table to JSON, then store in a CustData* db table LangTrans")]
-	public class JsonLangCommand : Command
+	public class DbLangCommand : Command
 	{
 		private readonly IEnumerable<Type> _commandTypes;
 		private readonly TextWriter _writer;
@@ -25,7 +25,7 @@ namespace BasfCli.Commands.Misc
         private List<LangTrans> _rollbackLang = null;
         private const int MASTER_LANG = Language.English;
 
-        public JsonLangCommand(IEnumerable<Type> commandTypes, TextWriter writer)
+        public DbLangCommand(IEnumerable<Type> commandTypes, TextWriter writer)
 		{
 			_commandTypes = commandTypes;
 			_writer = writer;
