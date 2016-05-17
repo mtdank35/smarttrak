@@ -83,11 +83,17 @@
     <Compile Include="Cli\ITypeNameMatcher.cs" />
     <Compile Include="Cli\TypeNameMatcher.cs" />
     <Compile Include="Commands\ApplicationCommand.cs" />
-    <Compile Include="Commands\LangTrans\LangDbCommand.cs" />
+    <Compile Include="Commands\LangTrans\JsonLangCommand.cs" />
+    <Compile Include="Commands\LangTrans\DbLangCommand.cs" />
     <Compile Include="Commands\Misc\HelpCommand.cs" />
     <Compile Include="Commands\Misc\SysinfoCommand.cs" />
     <Compile Include="Conf\ConfContainer.cs" />
     <Compile Include="Conf\GlobalConf.cs" />
+    <Compile Include="Data\CustDataDbi.cs" />
+    <Compile Include="Data\Repos\LangTransRepo.cs" />
+    <Compile Include="Data\Repos\JsonLangRepo.cs" />
+    <Compile Include="Data\Tables\LangTrans.cs" />
+    <Compile Include="Data\Tables\JsonLang.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +119,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SqlScripts\CreateDatabase.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
