@@ -89,6 +89,7 @@
     <Compile Include="Commands\Misc\SysinfoCommand.cs" />
     <Compile Include="Conf\ConfContainer.cs" />
     <Compile Include="Conf\GlobalConf.cs" />
+    <Compile Include="Data\IccmDbi.cs" />
     <Compile Include="Data\CustDataDbi.cs" />
     <Compile Include="Data\Repos\LangTransRepo.cs" />
     <Compile Include="Data\Repos\JsonLangRepo.cs" />
