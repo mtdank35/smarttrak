@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace BasfCli.Data.Repos
 {
-    public class JsonLangRepo : IDisposable
+    public class JsonLangRepo
     {
         private IDatabase _db;
         public JsonLangRepo(IDatabase db)
@@ -44,11 +44,6 @@ namespace BasfCli.Data.Repos
         public void Delete(JsonLang entity, SqlTransaction tx = null)
         {
             _db.Delete(entity, tx);
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }
     }
 }
