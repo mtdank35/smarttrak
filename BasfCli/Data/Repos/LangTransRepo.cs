@@ -19,16 +19,16 @@ namespace BasfCli.Data.Repos
             _db = db;
         }
 
-        public LangTrans Get(int langId, SqlTransaction tx = null)
+        public LangTrans Get(int langId, int labelId, SqlTransaction tx = null)
         {
-            var entity = _db.Get<LangTrans>(new { LangId = langId }, tx);
+            var entity = _db.Get<LangTrans>(new { lang_code = langId, label_code = labelId }, tx);
             return entity;
         }
 
         public List<LangTrans> GetList(int langId, SqlTransaction tx = null)
         {
             var pred = Predicates.Field<LangTrans>(x => x.lang_code, Operator.Eq, langId);
-            return GetList(pred, tx);
+            return GetList(pred, tx).OrderBy(x => x.label_id).ToList();
         }
 
         public List<LangTrans> GetList(IPredicate pred, SqlTransaction tx = null)
