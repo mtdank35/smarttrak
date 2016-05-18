@@ -1,4 +1,6 @@
 ﻿using BasfCli.Conf;
+using BasfCli.Data;
+using BasfCli.Data.Tables;
 using Dapper;
 using Newtonsoft.Json;
 using System;
@@ -37,12 +39,11 @@ namespace BasfCli.Commands.Misc
 
         protected override void InnerExecute(string[] arguments)
         {
-            using (var cn = new SqlConnection(_conf.Global.IccmDbcs))
+            using (var dbi = new IccmDbi(_conf.Global.IccmDbcs))
             {
                 try
                 {
-                    _rollbackLang = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = MASTER_LANG }).OrderBy(x => x.label_id).ToList();
-                    cn.Open();
+                    _rollbackLang = dbi.LangTrans.GetList(MASTER_LANG);
                     var map = new LanguageMap();
                     if (String.IsNullOrWhiteSpace(_langNmbrs))
                     {
@@ -53,7 +54,7 @@ namespace BasfCli.Commands.Misc
                         foreach (var key in map.LangMap.Keys)
                         {
                             var lang = map.LangMap[key];
-                            TransposeLang(cn, lang);
+                            TransposeLang(dbi, lang);
                         }
                     }
                     else
@@ -69,7 +70,7 @@ namespace BasfCli.Commands.Misc
                             if (map.LangMap.ContainsKey(langId))
                             {
                                 var lang = map.LangMap[langId];
-                                TransposeLang(cn, lang);
+                                TransposeLang(dbi, lang);
                             }
                             else
                             {
@@ -87,7 +88,7 @@ namespace BasfCli.Commands.Misc
             }
         }
 
-        private void TransposeLang(SqlConnection cn, LanguageInfo li)
+        private void TransposeLang(IccmDbi dbi, LanguageInfo li)
         {
             Stopwatch s = new Stopwatch();
             s.Reset();
@@ -100,7 +101,7 @@ namespace BasfCli.Commands.Misc
             if (li.Id == MASTER_LANG)
                 things = _rollbackLang;
             else
-                things = cn.Query<LangTrans>("SELECT label_id, label_text FROM LangTrans WHERE lang_code = @p1", new { p1 = li.Id }).OrderBy(x => x.label_id).ToList();
+                things = dbi.LangTrans.GetList(li.Id);
 
             foreach (var template in _rollbackLang)
             {
@@ -123,28 +124,6 @@ namespace BasfCli.Commands.Misc
 
             s.Stop();
             _writer.WriteLine(String.Format("     > {0}h {1}m {2}.{3:0}s", s.Elapsed.Hours, s.Elapsed.Minutes, s.Elapsed.Seconds, s.Elapsed.Milliseconds));
-        }
-
-        private class LangTrans
-        {
-            [JsonIgnore]
-            public int label_id { get; set; }
-            public string label_text { get; set; }
-
-            // control if we really need the 'x' prefix or not...
-            [JsonIgnore]
-            private bool _lblPrefix = true;
-
-            public string lbl_id
-            {
-                get
-                {
-                    if (_lblPrefix)
-                        return this.label_id == 0 ? "" : String.Format("b{0:#0}", this.label_id);
-                    else
-                        return this.label_id == 0 ? "" : String.Format("{0:#0}", this.label_id);
-                }
-            }
         }
     }
 }
