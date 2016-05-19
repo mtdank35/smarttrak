@@ -16,7 +16,7 @@ using System.Text;
 
 namespace BasfCli.Commands.Misc
 {
-	[CommandHelp("Convert LangTrans table to JSON, then uoload to AWS S3")]
+	[CommandHelp("Convert LangTrans table to JSON, then upload to AWS S3")]
 	public class AwsLangCommand : Command
 	{
 		private readonly IEnumerable<Type> _commandTypes;
