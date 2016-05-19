@@ -11,12 +11,14 @@ namespace BasfCli.Conf
     public class ConfContainer
     {
         private const string GLOBAL_CONF_FILENAME = "global.conf";
+        private const string AWSS3_CONF_FILENAME = "awsS3.conf";
         private string _dir;
 
         public ConfContainer(string dir)
         {
             _dir = dir;
             _globalConf = LoadConf<GlobalConf>(_dir, GLOBAL_CONF_FILENAME);
+            _awsS3Conf = LoadConf<AwsS3Conf>(_dir, AWSS3_CONF_FILENAME);
         }
 
         private T LoadConf<T>(string dir, string filename)
@@ -45,6 +47,15 @@ namespace BasfCli.Conf
             get
             {
                 return _globalConf;
+            }
+        }
+
+        private AwsS3Conf _awsS3Conf;
+        public AwsS3Conf AwsS3
+        {
+            get
+            {
+                return _awsS3Conf;
             }
         }
     }
