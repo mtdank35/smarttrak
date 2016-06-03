@@ -20,14 +20,14 @@ namespace Basf
         private SqlConnectionStringBuilder _custCb = null;
         private SqlConnectionStringBuilder _iccmCb = null;
 
-        public ConnectionProfile(string name, string custDbcs, string iccmDbcs)
+        public ConnectionProfile(string name, string connectString, string iccmConnectString)
         {
             Name = name;
-            ConnectString = custDbcs;
-            IccmConnectString = iccmDbcs;
+            ConnectString = connectString;
+            IccmConnectString = iccmConnectString;
 
-            _custCb = new SqlConnectionStringBuilder(custDbcs);
-            _iccmCb = new SqlConnectionStringBuilder(iccmDbcs);
+            _custCb = new SqlConnectionStringBuilder(connectString);
+            _iccmCb = new SqlConnectionStringBuilder(iccmConnectString);
         }
 
         #region CustData*

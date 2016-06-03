@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr.ServiceModel", "Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr.ServiceInterface", "Basf.ServiceInterface\BasfSvr.ServiceInterface.csproj", "{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr", "BasfSvr\BasfSvr.csproj", "{AE186E25-2FB7-4167-84A1-DBBE31410FEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE186E25-2FB7-4167-84A1-DBBE31410FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE186E25-2FB7-4167-84A1-DBBE31410FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE186E25-2FB7-4167-84A1-DBBE31410FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE186E25-2FB7-4167-84A1-DBBE31410FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,6 @@ Global
 		{49994590-DA78-477C-8534-1BFF14A41B5A} = {BBBDC500-DBB9-4C38-B500-24D5A82BC262}
 		{D863589A-726F-4107-98D6-626553FF5F83} = {7DA5D15F-D6F3-418B-A519-D471FC0DEB55}
 		{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8} = {7DA5D15F-D6F3-418B-A519-D471FC0DEB55}
+		{AE186E25-2FB7-4167-84A1-DBBE31410FEC} = {7DA5D15F-D6F3-418B-A519-D471FC0DEB55}
 	EndGlobalSection
 EndGlobal

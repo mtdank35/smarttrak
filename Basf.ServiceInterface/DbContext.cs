@@ -47,5 +47,9 @@ namespace BasfSvr.ServiceInterface
         {
             return new IccmDbi(_cp.IccmConnectStringWithAppInfo);
         }
+
+        public string CustDbcs { get { return _cp.ConnectStringWithAppInfo; } }
+
+        public string IccmDbcs { get { return _cp.IccmConnectStringWithAppInfo; } }
     }
 }

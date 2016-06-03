@@ -12,11 +12,12 @@ namespace BasfSvr.ServiceInterface
 {
     public class StatusService : Service
     {
+        public DbContext DbContext { get; set; }
+
         public object Get(Status request)
         {
-            // TODO: establish clsGlobals
-            SqlConnectionStringBuilder custCb = new SqlConnectionStringBuilder("Data Source=.\\SQL_ICCM;Initial Catalog=CustDataNA;Integrated Security=False;User ID=sa;Password=rUnt94thigh=kAnE~Lover97Lid;Connect Timeout=5");
-            SqlConnectionStringBuilder iccmCb = new SqlConnectionStringBuilder("Data Source=.\\SQL_ICCM;Initial Catalog=iccm_db;Integrated Security=False;User ID=sa;Password=rUnt94thigh=kAnE~Lover97Lid;Connect Timeout=5");
+            SqlConnectionStringBuilder custCb = new SqlConnectionStringBuilder(DbContext.CustDbcs);
+            SqlConnectionStringBuilder iccmCb = new SqlConnectionStringBuilder(DbContext.IccmDbcs);
             bool custDbAvail = false;
             string custDbError = null;
             try
