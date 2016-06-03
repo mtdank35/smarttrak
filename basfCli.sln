@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceStackApi", "ServiceS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr.ServiceModel", "BasfSvr.ServiceModel\BasfSvr.ServiceModel.csproj", "{D863589A-726F-4107-98D6-626553FF5F83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basf.ServiceInterface", "Basf.ServiceInterface\Basf.ServiceInterface.csproj", "{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr.ServiceInterface", "Basf.ServiceInterface\BasfSvr.ServiceInterface.csproj", "{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

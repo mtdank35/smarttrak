@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using BasfSvr.ServiceModel;
 using Humanizer;
 
-namespace Basf.ServiceInterface
+namespace BasfSvr.ServiceInterface
 {
     public class StatusService : Service
     {

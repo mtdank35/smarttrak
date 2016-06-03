@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Basf;
 using Basf.Data;
 
-namespace Basf.ServiceInterface
+namespace BasfSvr.ServiceInterface
 {
     public class DbContext
     {
