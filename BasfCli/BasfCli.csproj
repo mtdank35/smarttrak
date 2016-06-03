@@ -74,6 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Cli\AliasMatcher.cs" />
     <Compile Include="Cli\Command.cs" />
     <Compile Include="Cli\CommandDispatcher.cs" />
@@ -95,12 +98,6 @@
     <Compile Include="Conf\ConfContainer.cs" />
     <Compile Include="Conf\AwsS3Conf.cs" />
     <Compile Include="Conf\GlobalConf.cs" />
-    <Compile Include="Data\IccmDbi.cs" />
-    <Compile Include="Data\CustDataDbi.cs" />
-    <Compile Include="Data\Repos\LangTransRepo.cs" />
-    <Compile Include="Data\Repos\JsonLangRepo.cs" />
-    <Compile Include="Data\Tables\LangTrans.cs" />
-    <Compile Include="Data\Tables\JsonLang.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,7 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SqlScripts\CreateDatabase.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Basf.Core\Basf.Core.csproj">
+      <Project>{49994590-da78-477c-8534-1bff14a41b5a}</Project>
+      <Name>Basf.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

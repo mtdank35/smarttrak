@@ -5,9 +5,9 @@ using System.Reflection;
 using DapperExtensions;
 using DapperExtensions.Mapper;
 using DapperExtensions.Sql;
-using BasfCli.Data.Repos;
+using Basf.Data.Repos;
 
-namespace BasfCli.Data
+namespace Basf.Data
 {
     public class CustDataDbi : IDisposable
     {
@@ -50,7 +50,7 @@ namespace BasfCli.Data
         public CustDataDbi(string dbcs)
         {
             // make Dapper use ANSI strings (faster than Unicode)
-            Dapper.SqlMapper.AddTypeMap(typeof(string), System.Data.DbType.AnsiString);
+            //Dapper.SqlMapper.AddTypeMap(typeof(string), System.Data.DbType.AnsiString);
 
             _cn = new SqlConnection(dbcs);
             var config = new DapperExtensionsConfiguration(typeof(AutoClassMapper<>), new List<Assembly>(), new SqlServerDialect());

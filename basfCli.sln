@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfCli", "BasfCli\BasfCli.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangTrans", "LangTrans\LangTrans\LangTrans.csproj", "{320659CC-69E6-4E55-9AE5-9312E3E48FE6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{BBBDC500-DBB9-4C38-B500-24D5A82BC262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basf.Core", "Basf.Core\Basf.Core.csproj", "{49994590-DA78-477C-8534-1BFF14A41B5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleApps", "ConsoleApps", "{6239EC8A-7F53-4F56-84B6-B4220C7A2759}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{BE0ED837-F025-4934-83A1-50EDBFC026B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,17 @@ Global
 		{320659CC-69E6-4E55-9AE5-9312E3E48FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320659CC-69E6-4E55-9AE5-9312E3E48FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320659CC-69E6-4E55-9AE5-9312E3E48FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49994590-DA78-477C-8534-1BFF14A41B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49994590-DA78-477C-8534-1BFF14A41B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49994590-DA78-477C-8534-1BFF14A41B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49994590-DA78-477C-8534-1BFF14A41B5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9783FBFF-F3F4-49A5-AB5B-1F99BD275F76} = {6239EC8A-7F53-4F56-84B6-B4220C7A2759}
+		{320659CC-69E6-4E55-9AE5-9312E3E48FE6} = {BE0ED837-F025-4934-83A1-50EDBFC026B4}
+		{49994590-DA78-477C-8534-1BFF14A41B5A} = {BBBDC500-DBB9-4C38-B500-24D5A82BC262}
 	EndGlobalSection
 EndGlobal

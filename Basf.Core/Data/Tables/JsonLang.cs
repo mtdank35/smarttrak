@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasfCli.Data.Tables
+namespace Basf.Data.Tables
 {
     public class JsonLang
     {

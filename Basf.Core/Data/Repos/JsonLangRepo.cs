@@ -4,12 +4,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DapperExtensions;
-using BasfCli.Data.Tables;
+using Basf.Data.Tables;
 using DapperExtensions.Sql;
 using DapperExtensions.Mapper;
 using System.Reflection;
 
-namespace BasfCli.Data.Repos
+namespace Basf.Data.Repos
 {
     public class JsonLangRepo
     {

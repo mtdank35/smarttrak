@@ -1,7 +1,7 @@
 ﻿using BasfCli.Conf;
-using BasfCli.Data;
-using BasfCli.Data.Repos;
-using BasfCli.Data.Tables;
+using Basf.Data;
+using Basf.Data.Repos;
+using Basf.Data.Tables;
 using Dapper;
 using Newtonsoft.Json;
 using System;
