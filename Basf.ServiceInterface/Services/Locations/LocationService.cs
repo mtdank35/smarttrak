@@ -20,6 +20,8 @@ namespace BasfSvr.ServiceInterface
             using (var dbi = DbContext.NewCustDbInstance())
             {
                 var thing = dbi.Locations.Get(request.LocId);
+                if (thing == null)
+                    throw new DoesNotExistsException(String.Format("Location {0} does not exist", request.LocId));
                 var response = new LocationResponse();
                 response.Location = thing;
                 return response;
