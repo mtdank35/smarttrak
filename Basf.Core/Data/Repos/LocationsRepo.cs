@@ -21,7 +21,11 @@ namespace Basf.Data.Repos
 
         public Locations Get(int locId, SqlTransaction tx = null)
         {
-            var entity = _db.Get<Locations>(new { seqId = locId }, tx);
+            // some bug in this dapper version
+            //var entity = _db.Get<Locations>(new { seqId = locId }, tx);
+            
+            // bypass by doing manual sql
+            var entity = _db.Connection.Query<Locations>("SELECT * FROM Locations WHERE seqid = @p1", new { p1 = locId }, tx).FirstOrDefault();
             return entity;
         }
 
