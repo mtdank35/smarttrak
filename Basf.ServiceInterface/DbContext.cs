@@ -38,12 +38,12 @@ namespace BasfSvr.ServiceInterface
             _iccmDbi = NewIccmDbInstance();
         }
 
-        private CustDataDbi NewCustDbInstance()
+        public CustDataDbi NewCustDbInstance()
         {
             return new CustDataDbi(_cp.ConnectStringWithAppInfo);
         }
 
-        private IccmDbi NewIccmDbInstance()
+        public IccmDbi NewIccmDbInstance()
         {
             return new IccmDbi(_cp.IccmConnectStringWithAppInfo);
         }

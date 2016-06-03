@@ -63,6 +63,7 @@ namespace Basf.Data
         private void SetupRepos()
         {
             _jsonLangRepo = new JsonLangRepo(_db);
+            _locationsRepo = new LocationsRepo(_db);
         }
 
 
@@ -75,5 +76,13 @@ namespace Basf.Data
             }
         }
 
+        private LocationsRepo _locationsRepo = null;
+        public LocationsRepo Locations
+        {
+            get
+            {
+                return _locationsRepo;
+            }
+        }
     }
 }
