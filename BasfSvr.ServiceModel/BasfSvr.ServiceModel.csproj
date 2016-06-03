@@ -51,11 +51,19 @@
     <Compile Include="BaseResponse.cs" />
     <Compile Include="BasfHttpRequestHeaders.cs" />
     <Compile Include="Exceptions\DoesNotExistsException.cs" />
+    <Compile Include="Models\Locations\LocationRequestResponse.cs" />
+    <Compile Include="Models\Locations\LocationsRequestResponse.cs" />
     <Compile Include="Models\Status\StatusRequestResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Basf.Core\Basf.Core.csproj">
+      <Project>{49994590-DA78-477C-8534-1BFF14A41B5A}</Project>
+      <Name>Basf.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

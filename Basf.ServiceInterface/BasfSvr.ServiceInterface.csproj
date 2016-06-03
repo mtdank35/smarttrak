@@ -82,6 +82,8 @@
     <Compile Include="BasfHttpHeaders.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Locations\LocationService.cs" />
+    <Compile Include="Services\Locations\LocationsService.cs" />
     <Compile Include="Services\Status\StatusService.cs" />
   </ItemGroup>
   <ItemGroup>
