@@ -50,7 +50,7 @@
     <Compile Include="BaseRequest.cs" />
     <Compile Include="BaseResponse.cs" />
     <Compile Include="BasfHttpRequestHeaders.cs" />
-    <Compile Include="Exceptions\DoesNotExistsException.cs" />
+    <Compile Include="Exceptions\DoesNotExistException.cs" />
     <Compile Include="Models\Locations\LocationRequestResponse.cs" />
     <Compile Include="Models\Locations\LocationsRequestResponse.cs" />
     <Compile Include="Models\Status\StatusRequestResponse.cs" />

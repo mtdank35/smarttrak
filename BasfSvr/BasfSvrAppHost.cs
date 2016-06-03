@@ -59,7 +59,7 @@ namespace BasfSvr
                 {
                     // don't log certain exceptions
                     bool logIt = true;
-                    if (ex is DoesNotExistsException) logIt = false;
+                    if (ex is DoesNotExistException) logIt = false;
 
                     //// don't log when Client already has latest version
                     //if (ex is HttpError)

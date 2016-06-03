@@ -21,7 +21,7 @@ namespace BasfSvr.ServiceInterface
             {
                 var thing = dbi.Locations.Get(request.LocId);
                 if (thing == null)
-                    throw new DoesNotExistsException(String.Format("Location {0} does not exist", request.LocId));
+                    throw new DoesNotExistException(String.Format("Location {0} does not exist", request.LocId));
                 var response = new LocationResponse();
                 response.Location = thing;
                 return response;
@@ -57,7 +57,7 @@ namespace BasfSvr.ServiceInterface
             {
                 var thing = dbi.Locations.Get(request.LocId);
                 if (thing == null)
-                    throw new DoesNotExistsException("Location {0} does not exist".Fmt(request.Loc.seqid));
+                    throw new DoesNotExistException("Location {0} does not exist".Fmt(request.Loc.seqid));
 
                 dbi.Locations.Update(request.Loc);
                 var response = new LocationResponse();
