@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasfSvr", "BasfSvr\BasfSvr.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackChannelPost", "SlackChannelPost\SlackChannelPost.csproj", "{91C50FDB-6743-44D2-9048-681EAC2AE448}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D0394A5-7F15-42C6-822A-A479AEE23CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionProfiles.Tests", "ConnectionProfileTestFixture.cs\ConnectionProfiles.Tests.csproj", "{39002D08-01A7-4AB1-9A09-A61F2F7B94BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,10 @@ Global
 		{91C50FDB-6743-44D2-9048-681EAC2AE448}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C50FDB-6743-44D2-9048-681EAC2AE448}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C50FDB-6743-44D2-9048-681EAC2AE448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39002D08-01A7-4AB1-9A09-A61F2F7B94BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39002D08-01A7-4AB1-9A09-A61F2F7B94BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39002D08-01A7-4AB1-9A09-A61F2F7B94BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39002D08-01A7-4AB1-9A09-A61F2F7B94BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +79,6 @@ Global
 		{A84F2678-77DD-45E4-8AE0-3A3D59CDA8C8} = {7DA5D15F-D6F3-418B-A519-D471FC0DEB55}
 		{AE186E25-2FB7-4167-84A1-DBBE31410FEC} = {7DA5D15F-D6F3-418B-A519-D471FC0DEB55}
 		{91C50FDB-6743-44D2-9048-681EAC2AE448} = {6239EC8A-7F53-4F56-84B6-B4220C7A2759}
+		{39002D08-01A7-4AB1-9A09-A61F2F7B94BF} = {0D0394A5-7F15-42C6-822A-A479AEE23CB6}
 	EndGlobalSection
 EndGlobal
