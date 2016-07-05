@@ -64,6 +64,7 @@ namespace Basf.Data
         {
             _jsonLangRepo = new JsonLangRepo(_db);
             _locationsRepo = new LocationsRepo(_db);
+            _pourHdrRepo = new PourHdrRepo(_db);
         }
 
 
@@ -82,6 +83,15 @@ namespace Basf.Data
             get
             {
                 return _locationsRepo;
+            }
+        }
+
+        private PourHdrRepo _pourHdrRepo = null;
+        public PourHdrRepo PourHdr
+        {
+            get
+            {
+                return _pourHdrRepo;
             }
         }
     }
