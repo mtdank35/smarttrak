@@ -85,10 +85,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Locations\LocationService.cs" />
     <Compile Include="Services\Locations\LocationsService.cs" />
+    <Compile Include="Services\PourHdr\PourHdrsService.cs" />
     <Compile Include="Services\Status\StatusService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basf.Core\Basf.Core.csproj">
