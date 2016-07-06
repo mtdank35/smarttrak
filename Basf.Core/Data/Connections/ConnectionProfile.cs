@@ -15,19 +15,23 @@ namespace Basf
         public string Name { get; set; }
         public string ConnectString { get; set; }
         public string IccmConnectString { get; set; }
+        public string DataConnectString { get; set; }
 
         private Assembly entryAssembly = null;
         private SqlConnectionStringBuilder _custCb = null;
         private SqlConnectionStringBuilder _iccmCb = null;
+        private SqlConnectionStringBuilder _dataCb = null;
 
-        public ConnectionProfile(string name, string connectString, string iccmConnectString)
+        public ConnectionProfile(string name, string connectString, string iccmConnectString, string dataConnectString)
         {
             Name = name;
             ConnectString = connectString;
             IccmConnectString = iccmConnectString;
+            DataConnectString = dataConnectString;
 
             _custCb = new SqlConnectionStringBuilder(connectString);
             _iccmCb = new SqlConnectionStringBuilder(iccmConnectString);
+            _dataCb = new SqlConnectionStringBuilder(dataConnectString);
         }
 
         #region CustData*
@@ -114,6 +118,48 @@ namespace Basf
         }
         #endregion
 
+        #region Data*
+        [JsonIgnore]
+        public string DataServer
+        {
+            get
+            {
+                if (_dataCb == null) return "";
+                return _dataCb.DataSource;
+            }
+        }
+
+        [JsonIgnore]
+        public string DataUser
+        {
+            get
+            {
+                if (_dataCb == null) return "";
+                return _dataCb.UserID;
+            }
+        }
+
+        [JsonIgnore]
+        public string DataPassword
+        {
+            get
+            {
+                if (_dataCb == null) return "";
+                return _dataCb.Password;
+            }
+        }
+
+        [JsonIgnore]
+        public string DataDbName
+        {
+            get
+            {
+                if (_dataCb == null) return "";
+                return _dataCb.InitialCatalog;
+            }
+        }
+        #endregion
+
         [JsonIgnore]
         public string ConnectStringWithAppInfo
         {
@@ -129,6 +175,15 @@ namespace Basf
             get
             {
                 return AddAppNameAndVersionToConnectString(IccmConnectString);
+            }
+        }
+
+        [JsonIgnore]
+        public string DataConnectStringWithAppInfo
+        {
+            get
+            {
+                return AddAppNameAndVersionToConnectString(DataConnectString);
             }
         }
 
@@ -150,27 +205,42 @@ namespace Basf
         [OnSerializing]
         internal void OnSerializing(StreamingContext context)
         {
+            // CustData* Db
             SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder(ConnectString);
             scsb.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(scsb.Password));
             ConnectString = scsb.ConnectionString;
 
+            // Iccm Db
             scsb = new SqlConnectionStringBuilder(IccmConnectString);
             scsb.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(scsb.Password));
             IccmConnectString = scsb.ConnectionString;
+
+            // Data* Db
+            scsb = new SqlConnectionStringBuilder(DataConnectString);
+            scsb.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(scsb.Password));
+            DataConnectString = scsb.ConnectionString;
         }
 
         [OnSerialized]
         internal void OnSerialized(StreamingContext context)
         {
+            // CustData* Db
             SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder(ConnectString);
             byte[] bytes = Convert.FromBase64String(scsb.Password);
             scsb.Password = Encoding.UTF8.GetString(bytes);
             ConnectString = scsb.ConnectionString;
 
+            // Iccm Db
             scsb = new SqlConnectionStringBuilder(IccmConnectString);
             bytes = Convert.FromBase64String(scsb.Password);
             scsb.Password = Encoding.UTF8.GetString(bytes);
             IccmConnectString = scsb.ConnectionString;
+
+            // Data* Db
+            scsb = new SqlConnectionStringBuilder(DataConnectString);
+            bytes = Convert.FromBase64String(scsb.Password);
+            scsb.Password = Encoding.UTF8.GetString(bytes);
+            DataConnectString = scsb.ConnectionString;
         }
 
         private string AddConnectTimeout(string dbcs)
@@ -183,15 +253,23 @@ namespace Basf
         [OnDeserializing]
         internal void OnDeserializing(StreamingContext context)
         {
+            // CustData* Db
             _custCb = new SqlConnectionStringBuilder(ConnectString);
             byte[] bytes = Convert.FromBase64String(_custCb.Password);
             _custCb.Password = Encoding.UTF8.GetString(bytes);
             ConnectString = AddConnectTimeout(_custCb.ConnectionString);
 
+            // Iccm Db
             _iccmCb = new SqlConnectionStringBuilder(IccmConnectString);
             bytes = Convert.FromBase64String(_iccmCb.Password);
             _iccmCb.Password = Encoding.UTF8.GetString(bytes);
             IccmConnectString = AddConnectTimeout(_iccmCb.ConnectionString);
+
+            // Data* Db
+            _dataCb = new SqlConnectionStringBuilder(DataConnectString);
+            bytes = Convert.FromBase64String(_dataCb.Password);
+            _dataCb.Password = Encoding.UTF8.GetString(bytes);
+            DataConnectString = AddConnectTimeout(_dataCb.ConnectionString);
         }
 
         [OnDeserialized]

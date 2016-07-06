@@ -85,6 +85,7 @@
     <Compile Include="Data\Connections\ConnectionProfiles.cs" />
     <Compile Include="Data\Connections\ConnectionProfile.cs" />
     <Compile Include="Data\CustDataDbi.cs" />
+    <Compile Include="Data\DataDbi.cs" />
     <Compile Include="Data\IccmDbi.cs" />
     <Compile Include="Data\Repos\JsonLangRepo.cs" />
     <Compile Include="Data\Repos\PourHdrRepo.cs" />
