@@ -14,12 +14,12 @@ namespace BasfSvr.ServiceInterface
     {
         public DbContext DbContext { get; set; }
 
-        public object Get(PourHdrRequest request)
+        public object Get(PourHdrsRequest request)
         {
             using (var dbi = DbContext.NewCustDbInstance())
             {
                 var things = dbi.PourHdr.GetList(null);
-                var response = new PourHdrResponse();
+                var response = new PourHdrsResponse();
                 response.PourHdrs = things.ToList();
                 return response;
             }

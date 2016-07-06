@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace BasfSvr.ServiceModel
 {
     [Route("/pourhdrs", "GET")]
-    public class PourHdrRequest : BaseRequest
+    public class PourHdrsRequest : BaseRequest
     {
     }
 
-    public class PourHdrResponse : BaseResponse
+    public class PourHdrsResponse : BaseResponse
     {
         public List<PourHdr> PourHdrs { get; set; }
     }

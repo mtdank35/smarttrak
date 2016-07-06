@@ -53,7 +53,7 @@
     <Compile Include="Exceptions\DoesNotExistException.cs" />
     <Compile Include="Models\Locations\LocationRequestResponse.cs" />
     <Compile Include="Models\Locations\LocationsRequestResponse.cs" />
-    <Compile Include="Models\PourHdr\PourHdrRequestResponse.cs" />
+    <Compile Include="Models\PourHdr\PourHdrsRequestResponse.cs" />
     <Compile Include="Models\Status\StatusRequestResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
