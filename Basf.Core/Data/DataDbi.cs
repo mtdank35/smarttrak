@@ -62,18 +62,18 @@ namespace Basf.Data
 
         private void SetupRepos()
         {
-            //_langTransRepo = new LangTransRepo(_db);
+            _pntLineRepo = new PntLineRepo(_db);
         }
 
 
-        //private LangTransRepo _langTransRepo = null;
-        //public LangTransRepo LangTrans
-        //{
-        //    get
-        //    {
-        //        return _langTransRepo;
-        //    }
-        //}
+        private PntLineRepo _pntLineRepo = null;
+        public PntLineRepo PntLine
+        {
+            get
+            {
+                return _pntLineRepo;
+            }
+        }
 
     }
 }
