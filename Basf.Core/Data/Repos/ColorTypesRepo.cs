@@ -26,7 +26,7 @@ namespace Basf.Data.Repos
             return entity;
         }
 
-        public List<ColorTypes> GetList(IPredicate pred, SqlTransaction tx = null)
+        public List<ColorTypes> GetList(IPredicate pred = null, SqlTransaction tx = null)
         {
             return _db.Connection.GetList<ColorTypes>(pred, null, tx).OrderBy(x=>x.typedesc).ToList();
         }

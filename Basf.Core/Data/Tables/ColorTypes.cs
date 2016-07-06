@@ -19,7 +19,7 @@ namespace Basf.Data.Tables
     {
         public ColorTypesMapper()
         {
-            Table("colortype");
+            Table("colortypes");
             Map(p => p.colortype).Key(KeyType.Assigned);
             AutoMap();
         }
