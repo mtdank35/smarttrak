@@ -31,11 +31,21 @@ namespace BasfSvr.ServiceInterface
             }
         }
 
+        private DataDbi _dataDbi = null;
+        public DataDbi DataDbi
+        {
+            get
+            {
+                return _dataDbi;
+            }
+        }
+
         public DbContext(ConnectionProfile cp)
         {
             _cp = cp;
             _custDbi = NewCustDbInstance();
             _iccmDbi = NewIccmDbInstance();
+            _dataDbi = NewDataDbInstance();
         }
 
         public CustDataDbi NewCustDbInstance()
@@ -48,8 +58,15 @@ namespace BasfSvr.ServiceInterface
             return new IccmDbi(_cp.IccmConnectStringWithAppInfo);
         }
 
+        public DataDbi NewDataDbInstance()
+        {
+            return new DataDbi(_cp.DataConnectStringWithAppInfo);
+        }
+
         public string CustDbcs { get { return _cp.ConnectStringWithAppInfo; } }
 
         public string IccmDbcs { get { return _cp.IccmConnectStringWithAppInfo; } }
+
+        public string DataDbcs { get { return _cp.DataConnectStringWithAppInfo; } }
     }
 }
