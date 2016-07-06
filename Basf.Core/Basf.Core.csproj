@@ -87,6 +87,8 @@
     <Compile Include="Data\CustDataDbi.cs" />
     <Compile Include="Data\DataDbi.cs" />
     <Compile Include="Data\IccmDbi.cs" />
+    <Compile Include="Data\Repos\ProdTypeRepo.cs" />
+    <Compile Include="Data\Repos\AppPartRepo.cs" />
     <Compile Include="Data\Repos\ShadesRepo.cs" />
     <Compile Include="Data\Repos\JsonLangRepo.cs" />
     <Compile Include="Data\Repos\ColorTypesRepo.cs" />
@@ -94,6 +96,8 @@
     <Compile Include="Data\Repos\PourHdrRepo.cs" />
     <Compile Include="Data\Repos\LocationsRepo.cs" />
     <Compile Include="Data\Repos\LangTransRepo.cs" />
+    <Compile Include="Data\Tables\ProdType.cs" />
+    <Compile Include="Data\Tables\AppPart.cs" />
     <Compile Include="Data\Tables\Shades.cs" />
     <Compile Include="Data\Tables\JsonLang.cs" />
     <Compile Include="Data\Tables\Locations.cs" />

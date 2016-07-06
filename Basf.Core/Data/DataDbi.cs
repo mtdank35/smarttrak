@@ -62,10 +62,20 @@ namespace Basf.Data
 
         private void SetupRepos()
         {
+            _appPartRepo = new AppPartRepo(_db);
             _colorTypesRepo = new ColorTypesRepo(_db);
             _pntLineRepo = new PntLineRepo(_db);
             _prodTypeRepo = new ProdTypeRepo(_db);
             _shadesRepo = new ShadesRepo(_db);
+        }
+
+        private AppPartRepo _appPartRepo = null;
+        public AppPartRepo APar
+        {
+            get
+            {
+                return _appPartRepo;
+            }
         }
 
         private ColorTypesRepo _colorTypesRepo = null;
