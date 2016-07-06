@@ -64,6 +64,7 @@ namespace Basf.Data
         {
             _colorTypesRepo = new ColorTypesRepo(_db);
             _pntLineRepo = new PntLineRepo(_db);
+            _prodTypeRepo = new ProdTypeRepo(_db);
             _shadesRepo = new ShadesRepo(_db);
         }
 
@@ -82,6 +83,15 @@ namespace Basf.Data
             get
             {
                 return _pntLineRepo;
+            }
+        }
+
+        private ProdTypeRepo _prodTypeRepo = null;
+        public ProdTypeRepo ProdType
+        {
+            get
+            {
+                return _prodTypeRepo;
             }
         }
 

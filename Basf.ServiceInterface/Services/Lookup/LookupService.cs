@@ -53,6 +53,15 @@ namespace BasfSvr.ServiceInterface
                                 response.Values.Add(new Lookup() { DbVal = shade.tval_shade, DisplayVal = shade.shadedesc });
                         }
                         break;
+                    case "PRODTYPE":
+                        var pTypes = dbi.ProdType.GetList();
+                        if (pTypes.Count > 0)
+                        {
+                            response.Values = new List<Lookup>();
+                            foreach (var pType in pTypes)
+                                response.Values.Add(new Lookup() { DbVal = pType.code, DisplayVal = pType.descrip });
+                        }
+                        break;
                     default:
                         throw new HttpError(System.Net.HttpStatusCode.NotAcceptable, "INVALID_LOOKUP_TYPE",
                             String.Format("LookupType '{0}' not valid.", request.LookupType));
