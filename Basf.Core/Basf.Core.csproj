@@ -88,6 +88,7 @@
     <Compile Include="Data\DataDbi.cs" />
     <Compile Include="Data\IccmDbi.cs" />
     <Compile Include="Data\Repos\JsonLangRepo.cs" />
+    <Compile Include="Data\Repos\ColorTypesRepo.cs" />
     <Compile Include="Data\Repos\PntLineRepo.cs" />
     <Compile Include="Data\Repos\PourHdrRepo.cs" />
     <Compile Include="Data\Repos\LocationsRepo.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Data\Tables\JsonLang.cs" />
     <Compile Include="Data\Tables\Locations.cs" />
     <Compile Include="Data\Tables\LangTrans.cs" />
+    <Compile Include="Data\Tables\ColorTypes.cs" />
     <Compile Include="Data\Tables\PntLine.cs" />
     <Compile Include="Data\Tables\PourHdr.cs" />
     <Compile Include="Interfaces\ICmdSvcArgs.cs" />
