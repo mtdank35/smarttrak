@@ -62,8 +62,9 @@ namespace Basf.Data
 
         private void SetupRepos()
         {
-            _pntLineRepo = new PntLineRepo(_db);
             _colorTypesRepo = new ColorTypesRepo(_db);
+            _pntLineRepo = new PntLineRepo(_db);
+            _shadesRepo = new ShadesRepo(_db);
         }
 
         private ColorTypesRepo _colorTypesRepo = null;
@@ -84,5 +85,13 @@ namespace Basf.Data
             }
         }
 
+        private ShadesRepo _shadesRepo = null;
+        public ShadesRepo Shades
+        {
+            get
+            {
+                return _shadesRepo;
+            }
+        }
     }
 }
