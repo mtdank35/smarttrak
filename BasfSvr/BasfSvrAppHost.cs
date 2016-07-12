@@ -7,6 +7,7 @@ using Funq;
 using BasfSvr.ServiceInterface;
 using BasfSvr.ServiceModel.Exceptions;
 using System.Diagnostics;
+using ServiceStack.Razor;
 
 namespace BasfSvr
 {
@@ -31,6 +32,8 @@ namespace BasfSvr
                 DebugMode = true,       // show stack traces
                 WriteErrorsToResponse = true
             });
+
+            Plugins.Add(new RazorFormat());
 
             Plugins.Add(new RequestLogsFeature
             {
