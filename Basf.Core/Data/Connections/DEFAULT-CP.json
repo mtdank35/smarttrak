@@ -2,5 +2,6 @@
   "Name": "DEFAULT",
   "ConnectString": "Data Source=.\\SQL_ICCM;Initial Catalog=CustDataNA;Integrated Security=False;User ID=sa;Password=clVudDk0dGhpZ2g9a0FuRX5Mb3Zlcjk3TGlk;Connect Timeout=5",
   "IccmConnectString": "Data Source=.\\SQL_ICCM;Initial Catalog=iccm_db;Integrated Security=False;User ID=sa;Password=clVudDk0dGhpZ2g9a0FuRX5Mb3Zlcjk3TGlk;Connect Timeout=5",
-  "DataConnectString": "Data Source=.\\SQL_ICCM;Initial Catalog=DataNA;Integrated Security=False;User ID=sa;Password=clVudDk0dGhpZ2g9a0FuRX5Mb3Zlcjk3TGlk;Connect Timeout=5"
+  "DataConnectString": "Data Source=.\\SQL_ICCM;Initial Catalog=DataNA;Integrated Security=False;User ID=sa;Password=clVudDk0dGhpZ2g9a0FuRX5Mb3Zlcjk3TGlk;Connect Timeout=5",
+  "SScanConnectString": "Data Source=.\\SQL_ICCM;Initial Catalog=sscan_NA;Integrated Security=False;User ID=sa;Password=rUnt94thigh=kAnE~Lover97Lid;Connect Timeout=5"
 }

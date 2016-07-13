@@ -51,6 +51,8 @@
     <Compile Include="BaseResponse.cs" />
     <Compile Include="BasfHttpRequestHeaders.cs" />
     <Compile Include="Exceptions\DoesNotExistException.cs" />
+    <Compile Include="Models\CFCInterface\CFCInterfaceGetVersion.cs" />
+    <Compile Include="Models\CFCInterface\CFCSScanRequestResponse.cs" />
     <Compile Include="Models\Locations\LocationRequestResponse.cs" />
     <Compile Include="Models\Locations\LocationsRequestResponse.cs" />
     <Compile Include="Models\Lookups\LookupRequestResponse.cs" />

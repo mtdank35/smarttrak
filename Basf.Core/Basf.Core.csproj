@@ -67,6 +67,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
@@ -82,6 +83,9 @@
     </Compile>
     <Compile Include="Console\CmdSvcArgs.cs" />
     <Compile Include="Console\InteractiveServiceHelper.cs" />
+    <Compile Include="Data\DataUtils.cs" />
+    <Compile Include="Data\Repos\SScan\JobHeaderRepo.cs" />
+    <Compile Include="Data\SScanDbi.cs" />
     <Compile Include="Data\Connections\ConnectionProfiles.cs" />
     <Compile Include="Data\Connections\ConnectionProfile.cs" />
     <Compile Include="Data\CustDataDbi.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Data\Repos\PourHdrRepo.cs" />
     <Compile Include="Data\Repos\LocationsRepo.cs" />
     <Compile Include="Data\Repos\LangTransRepo.cs" />
+    <Compile Include="Data\Tables\SScan\JobHeader.cs" />
     <Compile Include="Data\Tables\ProdType.cs" />
     <Compile Include="Data\Tables\AppPart.cs" />
     <Compile Include="Data\Tables\Shades.cs" />

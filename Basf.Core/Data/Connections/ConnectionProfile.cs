@@ -16,22 +16,26 @@ namespace Basf
         public string ConnectString { get; set; }
         public string IccmConnectString { get; set; }
         public string DataConnectString { get; set; }
+        public string SScanConnectString { get; set; }
 
         private Assembly entryAssembly = null;
         private SqlConnectionStringBuilder _custCb = null;
         private SqlConnectionStringBuilder _iccmCb = null;
         private SqlConnectionStringBuilder _dataCb = null;
+        private SqlConnectionStringBuilder _sscanCb = null;
 
-        public ConnectionProfile(string name, string connectString, string iccmConnectString, string dataConnectString)
+        public ConnectionProfile(string name, string connectString, string iccmConnectString, string dataConnectString, string sscanConnectString)
         {
             Name = name;
             ConnectString = connectString;
             IccmConnectString = iccmConnectString;
             DataConnectString = dataConnectString;
+            SScanConnectString = sscanConnectString;
 
             _custCb = new SqlConnectionStringBuilder(connectString);
             _iccmCb = new SqlConnectionStringBuilder(iccmConnectString);
             _dataCb = new SqlConnectionStringBuilder(dataConnectString);
+            _sscanCb = new SqlConnectionStringBuilder(sscanConnectString);
         }
 
         #region CustData*
@@ -157,7 +161,51 @@ namespace Basf
                 if (_dataCb == null) return "";
                 return _dataCb.InitialCatalog;
             }
+
         }
+        #endregion
+
+        #region sscan*
+        [JsonIgnore]
+        public string SScanServer
+        {
+            get
+            {
+                if (_sscanCb == null) return "";
+                return _sscanCb.DataSource;
+            }
+        }
+
+        [JsonIgnore]
+        public string SSCanUser
+        {
+            get
+            {
+                if (_sscanCb == null) return "";
+                return _sscanCb.UserID;
+            }
+        }
+
+        [JsonIgnore]
+        public string SScanPassword
+        {
+            get
+            {
+                if (_sscanCb == null) return "";
+                return _sscanCb.Password;
+            }
+        }
+
+        [JsonIgnore]
+        public string SScanDbName
+        {
+            get
+            {
+                if (_sscanCb == null) return "";
+                return _sscanCb.InitialCatalog;
+            }
+        }
+
         #endregion
 
         [JsonIgnore]
@@ -184,6 +232,15 @@ namespace Basf
             get
             {
                 return AddAppNameAndVersionToConnectString(DataConnectString);
+            }
+        }
+
+        [JsonIgnore]
+        public string ScanConnectStringWithAppInfo
+        {
+            get
+            {
+                return AddAppNameAndVersionToConnectString(SScanConnectString);
             }
         }
 
@@ -219,6 +276,11 @@ namespace Basf
             scsb = new SqlConnectionStringBuilder(DataConnectString);
             scsb.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(scsb.Password));
             DataConnectString = scsb.ConnectionString;
+
+            // Data* Db
+            scsb = new SqlConnectionStringBuilder(SScanConnectString);
+            scsb.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(scsb.Password));
+            DataConnectString = scsb.ConnectionString;
         }
 
         [OnSerialized]
@@ -238,6 +300,12 @@ namespace Basf
 
             // Data* Db
             scsb = new SqlConnectionStringBuilder(DataConnectString);
+            bytes = Convert.FromBase64String(scsb.Password);
+            scsb.Password = Encoding.UTF8.GetString(bytes);
+            DataConnectString = scsb.ConnectionString;
+
+            // sscan* Db
+            scsb = new SqlConnectionStringBuilder(SScanConnectString);
             bytes = Convert.FromBase64String(scsb.Password);
             scsb.Password = Encoding.UTF8.GetString(bytes);
             DataConnectString = scsb.ConnectionString;
